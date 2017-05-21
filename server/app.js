@@ -4,6 +4,8 @@ var path = require('path');
 var env = process.env.NODE_ENV;
 var port = process.env.PORT || 3000;
 
+console.log("env is => ", env);
+
 if (env === 'dev') {
     app.use("/app", express.static(path.join(__dirname + '/../app/')));
     app.use("/bower_components", express.static(path.join(__dirname + '/../bower_components/')));
