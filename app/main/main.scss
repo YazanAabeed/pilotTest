@@ -1,0 +1,14 @@
+.main-view {
+  min-height: calc(100vh - 97px);
+}
+
+footer {
+  padding: 16px 32px;
+  font-size: small;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+@import "../HomeModule/home";
+@import "../CommentsModule/comments";
+

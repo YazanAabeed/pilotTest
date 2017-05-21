@@ -1,0 +1,50 @@
+.comments-view {
+  h5 {
+    margin: 0;
+  }
+
+  .material-icons {
+    cursor: pointer;
+  }
+
+  md-input-container {
+    padding: 0;
+    margin: 0;
+  }
+
+  md-card {
+    md-card-title {
+      padding: 20px 12px 0;
+    }
+  }
+
+  md-card-actions {
+    margin: 0 8px;
+  }
+
+  md-switch {
+    margin: -6px 10px 4px 20px;
+  }
+
+  .inputdemoErrors {
+    .inputErrorsApp {
+      min-height: 48px;
+    }
+  }
+
+  .inputdemoErrors {
+    md-input-container {
+      p  {
+        font-size: 0.8em;
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.add-edit-comment-modal {
+  form {
+    min-width: 600px;
+  }
+}

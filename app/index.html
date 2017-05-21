@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>pilotTest</title>
+    <base href="/app/">
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="/app/main/main.css">
+    <!-- endinject -->
+</head>
+
+<body ng-app="pilotTest" ng-cloak>
+
+    <div ng-include="'header.html'"></div>
+    <div ui-view="" class="main-view"></div>
+    <div ng-include="'footer.html'"></div>
+
+    <!-- inject:js -->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="/bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="/bower_components/angular-material/angular-material.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/bower_components/angular-ui-router/angular-ui-router.min.js"></script>
+    <script src="/app/app.js"></script>
+    <script src="/app/CommentsModule/CommentsViewController.js"></script>
+    <script src="/app/HomeModule/HomeController.js"></script>
+    <!-- endinject -->
+</body>
+</html>

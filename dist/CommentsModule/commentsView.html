@@ -1,0 +1,58 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+<div class="comments-view" layout="column" flex layout-fill ng-cloak>
+
+    <md-toolbar md-scroll-shrink>
+        <div class="md-toolbar-tools">Comments view</div>
+    </md-toolbar>
+
+    <md-content layout-padding>
+        <section>
+            <md-button class="md-fab" aria-label="add comment" ng-click="addNewItem($event)">
+                <md-icon class="material-icons md-light md-48" ng-cloak> add </md-icon>
+            </md-button>
+        </section>
+
+        <section>
+            <md-card md-theme="default" md-theme-watch>
+                <md-card-title>
+                    <md-card-title-text>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label>First name</label>
+                            <input ng-model="searchBy" />
+                        </md-input-container>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    Search by id
+                    <md-switch class="md-primary" aria-label="searchData" name="searchData" ng-model="searchData"></md-switch>
+                    Seach by email
+                </md-card-actions>
+            </md-card>
+        </section>
+
+        <section ng-show="loading">
+            <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+        </section>
+
+        <section ng-show="!loading">
+            <md-subheader class="md-primary"><h2>List of comments</h2></md-subheader>
+            <md-list layout-padding>
+                <md-list-item class="md-3-line" ng-repeat="item in comments | filter:searchCommentBy">
+                    <div class="md-list-item-text">
+                        <h3>Comment: {{item.id}}</h3>
+                        <h4>{{item.body}}</h4>
+                        <p>
+                            {{item.email}}
+                        </p>
+                    </div>
+
+                    <md-icon class="material-icons md-light md-48" ng-cloak ng-click="deleteItem($event, item)"> clear </md-icon>
+                    <md-icon class="material-icons md-light md-48" ng-cloak ng-click="editItem($event, item)"> edit </md-icon>
+
+                    <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+            </md-list>
+        </section>
+    </md-content>
+</div>

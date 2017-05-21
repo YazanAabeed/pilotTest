@@ -1,0 +1,54 @@
+<md-dialog aria-label="Add Edit comments" class="add-edit-comment-modal">
+    <form name="commentAddingForm" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Add comment</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon class="material-icons md-light md-48" aria-label="Close dialog"> clear </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-block">
+                    <label>Name</label>
+                    <input required md-no-asterisk name="name" ng-model="comment.name">
+
+                    <div ng-messages="projectForm.name.$error" md-auto-hide="false">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Body</label>
+                    <input required md-no-asterisk name="body" ng-model="comment.body">
+
+                    <div ng-messages="projectForm.body.$error">
+                        <div ng-message="required">This is required.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Email</label>
+                    <input required type="email" name="email" ng-model="comment.email"
+                           minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+                    <div ng-messages="projectForm.email.$error" role="alert">
+                        <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                            Your email must be between 10 and 100 characters long and look like an e-mail address.
+                        </div>
+                    </div>
+                </md-input-container>
+
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                <md-button type="submit" class="md-raised md-primary" ng-click="submitForm()">{{(comment.id) ?  'Edit Comment' : 'Add Comment'}}</md-button>
+            </section>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
