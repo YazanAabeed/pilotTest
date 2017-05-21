@@ -45,6 +45,7 @@
 
 .add-edit-comment-modal {
   form {
-    min-width: 600px;
+    max-width: 100%;
+    width: 600px;
   }
 }

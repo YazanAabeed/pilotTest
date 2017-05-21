@@ -2,7 +2,7 @@
     <form name="commentAddingForm" ng-cloak>
         <md-toolbar>
             <div class="md-toolbar-tools">
-                <h2>Add comment</h2>
+                <h2>{{(comment.id) ?  'Edit Comment' : 'Add Comment'}}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="cancel()">
                     <md-icon class="material-icons md-light md-48" aria-label="Close dialog"> clear </md-icon>
