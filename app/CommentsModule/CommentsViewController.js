@@ -14,7 +14,7 @@
             $stateProvider.state('comments', commentsState);
         }]);
 
-    app.controller('CommentsViewController', ['$scope', '$http', '$mdDialog', function ($scope, $http, $mdDialog) {
+    app.controller('CommentsViewController', ['$scope', '$http', '$mdDialog', '$cacheFactory',  '$timeout', function ($scope, $http, $mdDialog, $cacheFactory, $timeout) {
         $scope.comments = [];
         $scope.loading = true;
 
@@ -79,8 +79,6 @@
                     comment.id = $scope.comments[$scope.comments.length - 1].id + 1;
                     $scope.comments.push(comment);
                 }
-
-
             }, function () {
             });
         };
@@ -112,18 +110,31 @@
             });
         };
 
-        $http({
-            method: 'GET',
-            url: 'http://jsonplaceholder.typicode.com/comments'
-        }).then(function successCallback(response) {
-            $scope.comments = response.data;
-            $scope.loading = false;
+        $scope.cache = $cacheFactory.get("commentsObject") || $cacheFactory('commentsObject');
 
-            safeDigest($scope);
-        }, function errorCallback(response) {
-            $scope.loading = false;
-            safeDigest($scope);
-        });
+        if (angular.isUndefined($scope.cache.get("comments"))) {
+            $http({
+                method: 'GET',
+                url: 'https://jsonplaceholder.typicode.com/comments',
+                cache: $scope.cache
+            }).then(function successCallback(response) {
+
+                $scope.cache.put("comments", response.data);
+                $scope.comments = response.data;
+                $scope.loading = false;
+
+                safeDigest($scope);
+            }, function errorCallback(response) {
+                $scope.loading = false;
+                safeDigest($scope);
+            });
+        } else {
+
+            $timeout(function () {
+                $scope.comments = $scope.cache.get("comments");
+                $scope.loading = false;
+            }, 250);
+        }
     }]);
 
     app.controller('DialogController', ['$scope', '$mdDialog', 'resolvedData', function ($scope, $mdDialog, resolvedData) {
