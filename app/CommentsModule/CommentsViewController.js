@@ -114,7 +114,7 @@
 
         $http({
             method: 'GET',
-            url: 'https://jsonplaceholder.typicode.com/comments'
+            url: 'http://jsonplaceholder.typicode.com/comments'
         }).then(function successCallback(response) {
             $scope.comments = response.data;
             $scope.loading = false;
