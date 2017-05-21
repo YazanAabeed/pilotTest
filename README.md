@@ -1,14 +1,11 @@
-Run dev project:
-npm install
-bower install
-gulp serve
+Run dev project  | Run prod evn
+------------- | -------------
+npm install  | gulp serve:dist
+bower install  | git add .
+gulp serve   | git commit -m
+It will be deployed automatically | git push -u master
 
-The file can be found on app dir
 
-Run prod evn:
-gulp serve:dist
-git add .
-git commit -m
-git push -u master
 
-It will be deployed automatically
+
+
