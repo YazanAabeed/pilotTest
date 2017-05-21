@@ -68,8 +68,6 @@
             }).then(function (comment, id) {
                 comment = comment || {};
 
-                console.log(comment, id);
-
                 if (id) {
                     $scope.comments.forEach(function (commentIn, index) {
                         if (commentIn.id === comment.id) {
@@ -116,7 +114,7 @@
 
         $http({
             method: 'GET',
-            url: 'http://jsonplaceholder.typicode.com/comments'
+            url: 'https://jsonplaceholder.typicode.com/comments'
         }).then(function successCallback(response) {
             $scope.comments = response.data;
             $scope.loading = false;
