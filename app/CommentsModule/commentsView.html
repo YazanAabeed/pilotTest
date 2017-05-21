@@ -38,7 +38,7 @@
         <section ng-show="!loading">
             <md-subheader class="md-primary"><h2>List of comments</h2></md-subheader>
             <md-list layout-padding>
-                <md-list-item class="md-3-line" ng-repeat="item in comments | filter:searchCommentBy">
+                <md-list-item class="md-3-line" ng-repeat="item in comments | filter:searchCommentBy as commentSearchResult">
                     <div class="md-list-item-text">
                         <h3>Comment: {{item.id}}</h3>
                         <h4>{{item.body}}</h4>
@@ -51,6 +51,13 @@
                     <md-icon class="material-icons md-light md-48" ng-cloak ng-click="editItem($event, item)"> edit </md-icon>
 
                     <md-divider ng-if="!$last"></md-divider>
+                </md-list-item>
+
+                <md-list-item class="md-3-line" ng-if="commentSearchResult.length === 0">
+                    <div class="md-list-item-text">
+                        <h2>No comments found</h2>
+                    </div>
+                    <md-divider></md-divider>
                 </md-list-item>
             </md-list>
         </section>
